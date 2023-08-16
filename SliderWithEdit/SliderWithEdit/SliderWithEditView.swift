@@ -9,36 +9,28 @@ import SwiftUI
 
 struct SliderWithEditView: View {
     
-    private var rangeMin : Double
-    private var rangeMax : Double
+    @EnvironmentObject  var slidervalue : SliderValue
 
-    @State private var textValue : Double
-    @State private var sliderValue : Double
+    var rangeMin : Double = -10.0
+    var rangeMax : Double = 10.0
+    
     @FocusState private var isTextFieldFocused : Bool
     @FocusState private var isSliderFocused : Bool
 
-    /* user initializers from instantiation */
-    init(min : Double, max: Double) {
-        rangeMin = min
-        rangeMax = max
-        textValue = min
-        sliderValue = min
-        print("Starting sliderValue = \(sliderValue)\ttextValue = \(textValue)")
-    }
-    
     /* Clamp text edit entry to our range. */
     func clamp() {
-        if self.textValue > rangeMax {
-            self.textValue = rangeMax
-        } else if textValue < rangeMin {
-            self.textValue = rangeMin
+        if slidervalue.tv > rangeMax {
+            slidervalue.tv = rangeMax
+        } else if slidervalue.tv < rangeMin {
+            slidervalue.tv = rangeMin
         }
     }
 
     var body: some View {
         VStack {
+            
             TextField("Value:",
-                      value: $textValue,
+                      value: $slidervalue.tv,
                       format: .number.precision(.fractionLength(1)))
             .frame(width: 50, height: 50)
             .focused($isTextFieldFocused)
@@ -47,8 +39,8 @@ struct SliderWithEditView: View {
              * the value has changed, the Slider grabs focus. */
             .onSubmit {
                 clamp()
-                sliderValue = textValue
-                print("Text field submitted, slider updated to \(sliderValue)")
+                slidervalue.sv = slidervalue.tv
+                print("Text field submitted, slider updated to \(slidervalue.sv)")
             }
             /* onChange looks for TextField focus change. If we lost focus, either user hit <tab>
              * or moved the mouse out of the field. The only place in the view that can take focus
@@ -56,31 +48,31 @@ struct SliderWithEditView: View {
              * In either case we should copy the text field value to the slider. */
             .onChange(of: isTextFieldFocused) { isTextFieldFocused in
                 print("TextField focus changed. it is: isTextFieldFocused = \(isTextFieldFocused)")
-                print("TextField value after focus change = \(textValue)")
+                print("TextField value after focus change = \(slidervalue.tv)")
                 /* Only update slider when we lose focus, that is, <tab> was hit or mouse clicked on the slider */
                 if !isTextFieldFocused {
                     clamp()
-                    sliderValue = textValue
-                    print("TextField lost focus, so update new slider value from text entry: \(sliderValue)")
+                    slidervalue.sv = slidervalue.tv
+                    print("TextField lost focus, so update new slider value from text entry: \(slidervalue.sv)")
                 } else {
                     print("Focus changed to TextField, not updating slider.")
                 }
             }
             .disableAutocorrection(true)
 
-            Slider(value: $sliderValue,
+            Slider(value: $slidervalue.sv,
                    in: rangeMin...rangeMax,
                    step: 0.5)
             .focused($isSliderFocused)
             .frame(width: 200, height: 10)
-            .onChange(of: sliderValue) { value in
+            .onChange(of: slidervalue.sv) { value in
                 /* slider value changed, so force focus back to the slider. Oddly,
                  * clicking the mouse on the slider or its thumb doesn't give it focus.
                  * slider must have focus otherwise the textValue update from value here
                  * doesn't cause the TextField display to update. */
                 isSliderFocused = true
-                textValue = value
-                print("Slider moved, copy slider value to new textValue = \(textValue)")
+                slidervalue.tv = value
+                print("Slider moved, copy slider value to new textValue = \(slidervalue.tv)")
             }
             .padding()
         }
@@ -89,6 +81,7 @@ struct SliderWithEditView: View {
 
 struct SliderWithEditView_Previews: PreviewProvider {
     static var previews: some View {
-        SliderWithEditView(min: -10.0, max: 10.0)
+        SliderWithEditView()
+            .environmentObject(SliderValue(sv: 0.0, tv: 0.0))
     }
 }

@@ -6,3 +6,13 @@
 //
 
 import Foundation
+
+class SliderValue: ObservableObject {
+    @Published var sv : Double
+    @Published var tv : Double
+    
+    init(sv: Double, tv: Double) {
+        self.sv = sv
+        self.tv = tv
+    }
+}

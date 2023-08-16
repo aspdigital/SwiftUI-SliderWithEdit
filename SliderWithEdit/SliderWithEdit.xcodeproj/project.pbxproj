@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		A116A0212A8C3D20008D3F19 /* SliderValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = A116A0202A8C3D20008D3F19 /* SliderValue.swift */; };
+		A1BC17252A8C7BF000341E66 /* SliderWithEditList.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1BC17242A8C7BF000341E66 /* SliderWithEditList.swift */; };
 		A1CF072F2A82D606007D1CF5 /* SliderWithEditApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1CF072E2A82D606007D1CF5 /* SliderWithEditApp.swift */; };
 		A1CF07312A82D606007D1CF5 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1CF07302A82D606007D1CF5 /* ContentView.swift */; };
 		A1CF07332A82D607007D1CF5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A1CF07322A82D607007D1CF5 /* Assets.xcassets */; };
@@ -17,6 +18,7 @@
 
 /* Begin PBXFileReference section */
 		A116A0202A8C3D20008D3F19 /* SliderValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderValue.swift; sourceTree = "<group>"; };
+		A1BC17242A8C7BF000341E66 /* SliderWithEditList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderWithEditList.swift; sourceTree = "<group>"; };
 		A1CF072B2A82D606007D1CF5 /* SliderWithEdit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SliderWithEdit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1CF072E2A82D606007D1CF5 /* SliderWithEditApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderWithEditApp.swift; sourceTree = "<group>"; };
 		A1CF07302A82D606007D1CF5 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -59,6 +61,7 @@
 				A1CF072E2A82D606007D1CF5 /* SliderWithEditApp.swift */,
 				A1CF07302A82D606007D1CF5 /* ContentView.swift */,
 				A1CF073F2A82D7A5007D1CF5 /* SliderWithEditView.swift */,
+				A1BC17242A8C7BF000341E66 /* SliderWithEditList.swift */,
 				A116A0202A8C3D20008D3F19 /* SliderValue.swift */,
 				A1CF07322A82D607007D1CF5 /* Assets.xcassets */,
 				A1CF07372A82D607007D1CF5 /* SliderWithEdit.entitlements */,
@@ -148,6 +151,7 @@
 				A116A0212A8C3D20008D3F19 /* SliderValue.swift in Sources */,
 				A1CF07402A82D7A5007D1CF5 /* SliderWithEditView.swift in Sources */,
 				A1CF07312A82D606007D1CF5 /* ContentView.swift in Sources */,
+				A1BC17252A8C7BF000341E66 /* SliderWithEditList.swift in Sources */,
 				A1CF072F2A82D606007D1CF5 /* SliderWithEditApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -9,15 +9,15 @@ import SwiftUI
 
 struct ContentView: View {
     
+    @EnvironmentObject var slidervalue: SliderValue
+
     var body: some View {
         
         VStack {
             GroupBox {
-                SliderWithEditView(min: -95.5, max: 31.5)
+                SliderWithEditView(rangeMin: -95.5, rangeMax: 31.5)
             }
-            GroupBox {
-                SliderWithEditView(min: -10.0, max: 10.0)
-            }
+            Text("Slider A: \(slidervalue.sv)")
         }
     }
 }
@@ -25,5 +25,6 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
+            .environmentObject(SliderValue(sv: 0.0, tv: 0.0))
     }
 }
