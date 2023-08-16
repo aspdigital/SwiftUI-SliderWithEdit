@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
+    
     var body: some View {
         
         VStack {
@@ -15,7 +16,7 @@ struct ContentView: View {
                 SliderWithEditView(min: -95.5, max: 31.5)
             }
             GroupBox {
-                SliderWithEditView(min: -10, max: 10)
+                SliderWithEditView(min: -10.0, max: 10.0)
             }
         }
     }

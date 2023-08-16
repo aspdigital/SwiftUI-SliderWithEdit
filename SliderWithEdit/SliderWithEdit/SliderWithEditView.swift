@@ -8,23 +8,17 @@
 import SwiftUI
 
 struct SliderWithEditView: View {
+    
+    private var rangeMin : Double
+    private var rangeMax : Double
 
-    private var rangeMin : Float = -100.0
-    private var rangeMax : Float = 100.0
-
-    @State private var textValue : Float
-    @State private var sliderValue : Float
+    @State private var textValue : Double
+    @State private var sliderValue : Double
     @FocusState private var isTextFieldFocused : Bool
     @FocusState private var isSliderFocused : Bool
 
-    /* accept default initializers */
-    init() {
-        textValue = rangeMin
-        sliderValue = rangeMin
-    }
-
     /* user initializers from instantiation */
-    init(min : Float, max: Float) {
+    init(min : Double, max: Double) {
         rangeMin = min
         rangeMax = max
         textValue = min
@@ -95,6 +89,6 @@ struct SliderWithEditView: View {
 
 struct SliderWithEditView_Previews: PreviewProvider {
     static var previews: some View {
-        SliderWithEditView()
+        SliderWithEditView(min: -10.0, max: 10.0)
     }
 }
