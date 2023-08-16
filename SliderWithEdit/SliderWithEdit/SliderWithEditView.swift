@@ -9,10 +9,11 @@ import SwiftUI
 
 struct SliderWithEditView: View {
     
-    @EnvironmentObject  var slidervalue : SliderValue
+    @ObservedObject var slidervalue : SliderValue
 
     var rangeMin : Double = -10.0
     var rangeMax : Double = 10.0
+    var step : Double = 1.0
     
     @FocusState private var isTextFieldFocused : Bool
     @FocusState private var isSliderFocused : Bool
@@ -62,7 +63,7 @@ struct SliderWithEditView: View {
 
             Slider(value: $slidervalue.sv,
                    in: rangeMin...rangeMax,
-                   step: 0.5)
+                   step: step)
             .focused($isSliderFocused)
             .frame(width: 200, height: 10)
             .onChange(of: slidervalue.sv) { value in
@@ -81,7 +82,6 @@ struct SliderWithEditView: View {
 
 struct SliderWithEditView_Previews: PreviewProvider {
     static var previews: some View {
-        SliderWithEditView()
-            .environmentObject(SliderValue(sv: 0.0, tv: 0.0))
+        SliderWithEditView(slidervalue: SliderValue(sv: 0.0, tv: 0.0))
     }
 }

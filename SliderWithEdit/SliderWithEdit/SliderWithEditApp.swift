@@ -10,12 +10,9 @@ import SwiftUI
 @main
 struct SliderWithEditApp: App {
     
-    @StateObject private var slidervalue = SliderValue(sv: 0.0, tv: 0.0)
-    
     var body: some Scene {
         WindowGroup {
-            ContentView()
-                .environmentObject(slidervalue)
+            ContentView(slidervalue_a: SliderValue(sv: 0.0, tv: 0.0), slidervalue_b: SliderValue(sv: 1.1, tv: 1.1))
         }
     }
 }
