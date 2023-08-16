@@ -71,7 +71,11 @@ The `.onChange()` method is invoked when the `slidervalue.sv` property changes. 
 The next time we click on the TextField or <tab> to it, it gains focus. It is assumed that the `value` it displays is correct -- the only way it gets set is by user entry or a slider move -- so in the `.onChange()` we don't do anything when first getting focus.
 
 ## Using this control (View)
-`ContentView.swift` is an example of our application's `ContentView` instantiating two of the SliderWithEdit controls. The control's view has an `@ObservedObject slidervalue` of the class `SliderValue`. An `@ObservedValue` refers to an object that is created elsewhere, so in our `ContentView` structure we declare two `@StateObject var slidervalue_a: SliderValue` properties, which are the "Source of Truth" for the control values. The `ContentView` instantiates two of our Slider/Edit controls with `SliderWithEditView(slidervalue: slidervalue_a, rangeMin: -95.5, rangeMax: 31.5, step: 0.5)` and another. I also added two `Text` controls to always show the current setting of the slider/textfield.   
+`ContentView.swift` is an example of our application's `ContentView` instantiating two of the SliderWithEdit controls. The control's view has an `@ObservedObject slidervalue` of the class `SliderValue`. An `@ObservedValue` refers to an object that is created elsewhere, so in our `ContentView` structure we declare two `@StateObject var slidervalue_a: SliderValue` properties, which are the "Source of Truth" for the control values. The `ContentView` instantiates two of our Slider/Edit controls with `SliderWithEditView(slidervalue: slidervalue_a, rangeMin: -95.5, rangeMax: 31.5, step: 0.5)` and another. I also added two `Text` controls to always show the current setting of the slider/textfield.  
+
+Here is is, at work:
+
+https://github.com/aspdigital/SwiftUI-SliderWithEdit/assets/6307155/63b4e329-7872-444a-9e83-311c371544ff
 
 ## Summary
 The control value interchange is somewhat circular. There are suggestions that only one `@State` property can be used, shared by both the Text Field and the Slider as their `value:`s, but I couldn't get that to work. (I think it _should_ work and any suggestions are welcome!) Now we get both the text field value and the slider value, and they should always be the same.
